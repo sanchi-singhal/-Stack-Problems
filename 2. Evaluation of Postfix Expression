@@ -1,0 +1,38 @@
+2. Evaluation of Postfix Expression
+
+https://practice.geeksforgeeks.org/problems/evaluation-of-postfix-expression1735/1?page=2&category[]=Stack&sortBy=difficulty
+
+
+class Solution:
+    def __init__(self):
+        self.stack=[]
+    def push(self,data):
+        self.stack.append(data)
+    def pop(self):
+        if(self.stack):
+            topEle=self.stack.pop()
+            return topEle
+    
+    #Function to evaluate a postfix expression.
+    def evaluatePostfix(self, S):
+        for i in S:
+            # print(self.stack)
+            if(i=="*" or i=="/" or i=="+" or i=="-"):
+                a=self.pop()
+                b=self.pop()
+                if(i=="*"):
+                    result=b*a
+                elif(i=="/"):
+                    result=b//a
+                elif(i=="+"):
+                    result=b+a
+                else:
+                    result=b-a
+                self.push(result)
+            else:
+                self.push(int(i))
+        return self.stack[-1]
+
+
+T:O(n)
+S:O(n)
