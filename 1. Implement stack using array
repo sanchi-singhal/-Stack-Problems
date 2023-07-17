@@ -1,0 +1,26 @@
+1. Implement stack using array
+
+https://practice.geeksforgeeks.org/problems/implement-stack-using-array/1?page=1&category[]=Stack&sortBy=difficulty
+
+class MyStack:
+    
+    def __init__(self):
+        self.arr=[]
+    
+    #Function to push an integer into the stack.
+    def push(self,data):
+        self.arr.append(data)
+        #add code here
+    
+    #Function to remove an item from top of the stack.
+    def pop(self):
+        #add code here
+        if(self.arr):
+            topEle=self.arr.pop()
+            return topEle
+        else:
+            return -1
+
+
+  t:O(1)
+  s:O(1)
