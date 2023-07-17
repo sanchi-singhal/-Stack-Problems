@@ -1,0 +1,69 @@
+3. Infix to Postfix
+
+
+https://practice.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1?page=3&category[]=Stack&sortBy=difficulty
+
+
+class Solution:
+    def __init__(self):
+        self.stack=[]
+        self.expression=[]
+
+    def push(self,l,data):
+        l.append(data)
+    
+    def pop(self,l):
+        if(l):
+            topEle=l.pop()
+            return topEle
+        
+    
+    #Function to convert an infix expression to a postfix expression.
+    def InfixtoPostfix(self, exp):
+        for i in exp:
+            # print(self.stack,self.expression)
+            if(i=="("):
+                self.push(self.stack,i)
+            elif(i==")"):
+                while(self.stack and self.stack[-1]!="("):
+                    result=self.pop(self.stack)
+                    self.push(self.expression,result)
+                self.pop(self.stack)
+            elif(i=="^"):
+                while(self.stack and self.stack[-1]=="^"):
+                    result=self.pop(self.stack)
+                    self.push(self.expression,result)
+                self.push(self.stack,i)
+            elif(i=="/"):
+                while(self.stack and (self.stack[-1]=="^" or self.stack[-1]=="*" or self.stack[-1]=="/")):
+                    result=self.pop(self.stack)
+                    self.push(self.expression,result)
+                self.push(self.stack,i)
+            elif(i=="*"):
+                while(self.stack and (self.stack[-1]=="^" or self.stack[-1]=="/" or self.stack[-1]=="*")):
+                    result=self.pop(self.stack)
+                    self.push(self.expression,result)
+                self.push(self.stack,i)
+            elif(i=="+"):
+                while(self.stack and (self.stack[-1]=="^" or self.stack[-1]=="*" or self.stack=="/" or self.stack[-1]=="-" or self.stack[-1]=="+")):
+                    result=self.pop(self.stack)
+                    self.push(self.expression,result)
+                self.push(self.stack,i)
+            elif(i=="-"):
+                while(self.stack and (self.stack[-1]=="^" or self.stack[-1]=="*" or self.stack=="/" or self.stack[-1]=="-" or self.stack[-1]=="+")):
+                    result=self.pop(self.stack)
+                    self.push(self.expression,result)
+                self.push(self.stack,i)
+            else:
+                self.push(self.expression,i)
+        while(self.stack):
+            result=self.pop(self.stack)
+            self.push(self.expression,result)
+        ans=""
+        for i in self.expression:
+            ans=ans+i
+        return ans
+
+
+  T:O(n)
+  S:O(n)
