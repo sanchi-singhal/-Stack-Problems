@@ -1,0 +1,29 @@
+7. Parenthesis Checker
+
+https://practice.geeksforgeeks.org/problems/parenthesis-checker2744/1?page=1&category[]=Stack&sortBy=difficulty
+
+
+class Solution:
+    
+    #Function to check if brackets are balanced or not.
+    def __init__(self):
+        self.stack=[]
+        
+    def push(self,data):
+        self.stack.append(data)
+        
+    def pop(self):
+        if(self.stack):
+            return self.stack.pop()
+    def ispar(self,x):
+        for i in x:
+            if(i==")" and self.stack and self.stack[-1]=="("):
+                self.pop()
+            elif(i=="]" and self.stack and self.stack[-1]=="["):
+                self.pop()
+            elif(i=="}" and self.stack and self.stack[-1]=="{"):
+                self.pop()
+            else:
+                self.push(i)
+        return not self.stack
+        # code here
