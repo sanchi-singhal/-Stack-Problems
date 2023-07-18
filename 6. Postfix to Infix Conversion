@@ -1,0 +1,32 @@
+6. Postfix to Infix Conversion
+
+https://practice.geeksforgeeks.org/problems/postfix-to-infix-conversion/1
+
+class Solution:
+    
+    def __init__(self):
+        self.stack=[]
+    
+    def push(self,data):
+        self.stack.append(data)
+        
+    def pop(self):
+        if(self.stack):
+            return self.stack.pop()
+    def postToInfix(self, pre_exp):
+        for i in pre_exp:
+            if(i=="*" or i=="/" or i=="+" or i=="-"):
+                pass
+                b=self.pop()
+                a=self.pop()
+                if(i=="*"):
+                    self.push("("+a+"*"+b+")")
+                elif(i=="/"):
+                    self.push("("+a+"/"+b+")")
+                elif(i=="+"):
+                    self.push("("+a+"+"+b+")")
+                else:
+                    self.push("("+a+"-"+b+")")
+            else:
+                self.push(i)
+        return self.stack[-1]
