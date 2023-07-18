@@ -1,0 +1,28 @@
+8. Valid Expression
+
+https://practice.geeksforgeeks.org/problems/valid-expression1025/1?page=3&category[]=Stack&sortBy=difficulty
+
+
+class Solution:
+    
+    def __init__(self):
+        self.stack=[]
+        
+    def push(self,data):
+        self.stack.append(data)
+        
+    def pop(self):
+        if(self.stack):
+            self.stack.pop()
+            
+    def valid(self, s): 
+        for i in s:
+            if(i==")" and self.stack and self.stack[-1]=="("):
+                self.pop()
+            elif(i=="]" and self.stack and self.stack[-1]=="["):
+                self.pop()
+            elif(i=="}" and self.stack and self.stack[-1]=="{"):
+                self.pop()
+            else:
+                self.push(i)
+        return not self.stack
