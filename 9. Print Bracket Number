@@ -1,0 +1,54 @@
+9. Print Bracket Number
+
+https://practice.geeksforgeeks.org/problems/print-bracket-number4058/1?page=3&category[]=Stack&sortBy=submissions
+
+
+class Solution:
+    def __init__(self):
+        self.stack=[]
+        self.count=[]
+    def push(self,l,data):
+        l.append(data)
+    def pop(self,l):
+        if(l):
+            return l.pop()
+	def bracketNumbers(self, S):
+	    c=0
+	    ans=[]
+	    for i in S:
+	        if(i=="("):
+	            self.push(self.stack,i)
+	            c=c+1
+	            ans.append(c)
+	            self.push(self.count,c)
+	        elif(i==")"):
+	            self.pop(self.stack)
+	            a=self.pop(self.count)
+	            ans.append(a)
+	    return ans
+
+
+
+
+     ##no need to take two stacks
+
+     class Solution:
+    def __init__(self):
+        self.stack=[]
+    def push(self,data):
+        self.stack.append(data)
+    def pop(self):
+        if(self.stack):
+            return self.stack.pop()
+	def bracketNumbers(self, S):
+	    c=0
+	    ans=[]
+	    for i in S:
+	        if(i=="("):
+	            c=c+1
+	            ans.append(c)
+	            self.push(c)
+	        elif(i==")"):
+	            a=self.pop()
+	            ans.append(a)
+	    return ans
