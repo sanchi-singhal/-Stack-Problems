@@ -1,0 +1,19 @@
+1. Stack designer
+
+
+https://practice.geeksforgeeks.org/problems/stack-designer/1?page=1&category[]=Stack&sortBy=difficulty
+
+
+def _push(arr):
+    stack=[]
+    for i in arr:
+        stack.append(i)
+    return stack
+    #return a stack with all elements of arr inserted in it
+    
+    
+
+#_pop function to print elements of the stack remove as well
+def _pop(stack):
+    while(stack):
+        print(stack.pop(),end=" ")
